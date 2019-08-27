@@ -12,7 +12,7 @@ webtob	WEBTOBDIR="/root/webtob",
 		NODENAME = "$(NODENAME)",
 		ERRORDOCUMENT = "503",
 		#Options="IgnoreExpect100Continue",
-		#JSVPORT = 9900,
+		JSVPORT = 9900,
 		LOGGING = "log1",
 		ERRORLOG = "log2",
 		SYSLOG = "syslog"
@@ -21,11 +21,14 @@ webtob	WEBTOBDIR="/root/webtob",
 htmlg		NODENAME = "webtob", SVRTYPE = HTML
 cgig		NODENAME = "webtob", SVRTYPE = CGI
 ssig		NODENAME = "webtob", SVRTYPE = SSI
+jsvg		NODENAME = "webtob", SVRTYPE = JSV
 
 *SERVER
 html		SVGNAME = htmlg, MinProc = 2, MaxProc = 10, ASQCount = 1 
 cgi		SVGNAME = cgig, MinProc = 2, MaxProc = 10, ASQCount = 1 
 ssi 		SVGNAME = ssig, MinProc = 2, MaxProc = 10, ASQCount = 1
+MyGroup 	SVGNAME = jsvg, MinProc = 100, MaxProc = 100
+
 
 *URI
 uri1		Uri = "/cgi-bin/",   Svrtype = CGI
@@ -47,3 +50,4 @@ log2		Format = "ERROR", FileName = "/root/webtob/log/error.log_%M%%D%%Y%",
 
 *EXT
 htm			MimeType = "text/html", SvrType = HTML
+jsp			MimeType = "application/jsp", SvrType = JSV
